@@ -7,8 +7,6 @@ import hudson.model.TaskListener;
 import hudson.model.listeners.RunListener;
 import io.jenkins.plugins.cloudevents.Stage;
 
-import java.util.Date;
-
 
 /**
  * Class which implements RunListener and responds to events relating to run of a job.
