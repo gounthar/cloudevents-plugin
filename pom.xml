@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.16</version>
+        <version>4.88</version>
         <relativePath />
     </parent>
 
@@ -17,8 +17,9 @@
     <properties>
         <revision>1.0.0</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.277.4</jenkins.version>
-        <java.level>8</java.level>
+        <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
+        <jenkins.baseline>2.462</jenkins.baseline>
+        <jenkins.version>${jenkins.baseline}.3</jenkins.version>
         <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     </properties>
 
@@ -30,8 +31,8 @@
 
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.277.x</artifactId>
-                <version>26</version>
+                <artifactId>bom-${jenkins.baseline}.x</artifactId>
+                <version>4228.v0a_71308d905b_</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -51,14 +52,6 @@
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
-
-    <developers>
-        <developer>
-            <id>ShrutiC-git</id>
-            <name>Shruti Chaturvedi</name>
-            <email>shrutichaturvedi16.sc@gmail.com</email>
-        </developer>
-    </developers>
 
     <dependencies>
 
@@ -90,7 +83,6 @@
         <dependency>
             <groupId>io.jenkins</groupId>
             <artifactId>configuration-as-code</artifactId>
-            <version>1.35</version>
             <optional>true</optional>
         </dependency>
 
@@ -105,7 +97,6 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -113,7 +104,6 @@
        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>3.7.7</version>
             <scope>test</scope>
         </dependency>
 
@@ -143,7 +133,6 @@
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>plugin-util-api</artifactId>
-            <version>2.0.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -167,7 +156,6 @@
         <dependency>
             <groupId>io.jenkins.configuration-as-code</groupId>
             <artifactId>test-harness</artifactId>
-            <version>1.35</version>
             <scope>test</scope>
         </dependency>
 
@@ -178,7 +166,6 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.6</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
@@ -199,13 +186,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
             </plugin>
         </plugins>
     </build>
 
     <scm>
-        <connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
+        <connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
         <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
         <url>https://github.com/${gitHubRepo}</url>
         <tag>${scmTag}</tag>
